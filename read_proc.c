@@ -42,6 +42,7 @@ http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentatio
 #include <signal.h>
 
 #define PATH_MAX 2048
+#define MAX_LINE_SIZE 128
 
 int child_pid;
 
@@ -108,8 +109,8 @@ static int main_loop(char *pidstatus)
   vmpeak = NULL;
   vmrss = NULL;
   vmhwm = NULL;
-  line = malloc(128);
-  len = 128;
+  line = malloc(MAX_LINE_SIZE);
+  len = MAX_LINE_SIZE;
 	
   f = fopen(pidstatus, "r");
   if (!f) return 1;
