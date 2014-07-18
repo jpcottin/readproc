@@ -174,7 +174,6 @@ static int main_loop(char *pidstatus)
   return 0;
 }
 
-
 int main(int argc, char **argv)
 {
   char buf[PATH_MAX];
