@@ -1,7 +1,7 @@
 readproc
 ========
 
-Tools to extract information of the proc filesystem .
+Tools to extract information of the proc filesystem.
 Every .1 second the program will print 
 VmPeak (peak virtual memory size) 
 
