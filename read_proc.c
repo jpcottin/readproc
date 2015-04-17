@@ -48,7 +48,7 @@ int child_pid;
 
 static int usage(char *me)
 {
-  fprintf(stderr, "%s: filename args\n", me);
+  fprintf(stderr, "%s [-p PID | executable  [arg *]]\n", me);
   fprintf(stderr, "Run program, and print VmPeak, VmSize, VmRSS and VmHWM (in KiB) to stderr\n");
 
   return 0;
@@ -194,10 +194,16 @@ int main(int argc, char **argv)
       fprintf(stderr, "sigaction failed\n");
       return 1;
     }
+
+  if (!strcmp ("-p",argv[1])) {
+      child_pid = atoi(argv[2]);
+  }
+  else{
 	
-  child_pid = fork();
+      child_pid = fork();
 	
-  if (!child_pid) return child(argc, argv);
+      if (!child_pid) return child(argc, argv);
+  }
 	
   snprintf(buf, PATH_MAX, "/proc/%d/status", child_pid);
 	
